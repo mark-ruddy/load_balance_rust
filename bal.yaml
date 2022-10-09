@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: axum-balancer
+spec:
+  selector:
+    app: axum-server
+  ports:
+    - port: 8080
+      targetPort: 8080
+  type: LoadBalancer

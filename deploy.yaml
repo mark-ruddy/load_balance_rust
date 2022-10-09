@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: axum-server
+  labels:
+    app: axum-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: axum-server
+  template:
+    metadata:
+      labels:
+        app: axum-server
+    spec:
+      containers:
+        - name: server
+          image: "localhost:30000/axum-server:0.0.2"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
